@@ -2,7 +2,8 @@
 #include <math.h>
 int main()
 {
-    int x, y, ans;
+    int x, y;
+    float ans;
     //Input x and y//
     printf("Enter the value of X: ");
     scanf("%d",&x);
@@ -10,6 +11,6 @@ int main()
     scanf("%d",&y);
     //Calculate X to the power of Y//
     ans = pow(x,y);
-    printf("The value of X to the power of Y is: %d",ans);
+    printf("The value of X to the power of Y is: %f",ans);
     return 0;
 }
