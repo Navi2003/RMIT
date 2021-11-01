@@ -41,7 +41,7 @@ int main(){
             } else if(comp-user==1||comp-user==-2){
                 printf("You won!\n");
             } else if(user-comp==1||user-comp==-2){
-                printf("You lost !\n");
+                printf("You lost!\n");
             }
             printf("\n");
         }
