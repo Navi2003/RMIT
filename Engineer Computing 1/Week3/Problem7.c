@@ -1,19 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
+    //Declare variable for user input
     int user=-1;
     do {
-        int comp = rand() % (2+1);
+        //Enter an integer, repeat if number not in specified range and end if user chooses exit
         do {
             printf("Welcome to Rock Paper Scissors!\n");
             printf("Rock: 2, Paper: 1, Scissors: 0, Exit:-1\n");
             printf("Your choice: ");
             scanf("%d",&user);
             if (user>2 || user<-1) {
-                printf("Please choose from the given choices!\n");
+                printf("Please select from the given choices!\n");
             }
         } while (user>2 || user<-1);
         if (user!=-1){
+            int comp = rand() % 3; //Randomize computer choice
+            //Print user choice
             switch (user){
                 case 2:
                     printf("You chose Rock!\n");
@@ -25,6 +28,7 @@ int main(){
                     printf("You chose Scissors!\n");
                     break;
             }
+            //Print computer choice
             switch (comp){
                 case 2:
                     printf("Computer chose Rock!\n");
@@ -36,6 +40,7 @@ int main(){
                     printf("Computer chose Scissors!\n");
                     break;
             }
+            //Determine who won and print result
             if (user==comp){
                 printf("It's a draw\n");
             } else if(comp-user==1||comp-user==-2){
