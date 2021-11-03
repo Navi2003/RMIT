@@ -7,6 +7,9 @@ int main() {
     do {
         printf("Enter a positive integer: ");
         scanf("%d",&num);
+        if(num<0){
+            break;
+        }
         if (num>0) {
             sum += num;
             numcount++;

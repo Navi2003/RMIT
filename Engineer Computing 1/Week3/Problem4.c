@@ -1,7 +1,7 @@
 #include <stdio.h>
 int main() {
     //Declare variables for the column and row
-    int column, row, prod;
+    int column, row;
     
     //Print out the top part first
     printf(" x |   1   2   3   4   5   6   7   8   9  10\n");
@@ -15,8 +15,7 @@ int main() {
         }
         //Loop for printing out the product of column and row
         for (column = 1;column <= 10;column++) {
-                prod = column * row;
-                printf("%4d",prod);
+                printf("%4d",column * row);
             }
         column = 0;
         printf("\n");
