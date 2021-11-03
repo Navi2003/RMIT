@@ -11,7 +11,7 @@ int main() {
             sum += num;
             numcount++;
         }
-    } while (num>0);
+    } while (num>=0);
     
     //Print the sum and the number of positive integers//
     printf ("Here's the sum of all the positive integer: %d\n",sum);

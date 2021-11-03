@@ -3,6 +3,7 @@ int main()
 {
     //Declare variables
     float result;
+    
     //Input result until in correct range
     do {
         printf("Enter your final result: ");
@@ -11,6 +12,7 @@ int main()
         printf("The final result must be between 0 and 100.\nTry again.\n");
     }
     } while (result>100 || result<0);
+    
     //Print final result based on score
     if (result>=80) {
         printf("Final result: HD");
