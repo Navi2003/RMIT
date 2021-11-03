@@ -21,7 +21,8 @@ int main(){
         //Print user choice
         switch (user){
             case 2:
-                printf("You chose Rock!\n");                    break;
+                printf("You chose Rock!\n");                    
+                break;
             case 1:
                 printf("You chose Paper!\n");
                 break;
