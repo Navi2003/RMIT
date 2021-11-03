@@ -1,26 +1,27 @@
 #include <stdio.h>
 int main(){
     //Declare variables necessary
-    int a, b, c, d;
+    int num, row, space, value;
     
     //Enter an integer, repeat if not in specified range
     do {
         printf("Enter an integer between 1 and 15: ");
-        scanf("%d",&a);
-    } while(a<1 || a>15);
+        scanf("%d",&num);
+    } while(num<1 || num>15);
+    
     //Nested loop to create a pyramid, highest value increasing each loop
-    for (b=1;b<=a;b++) {
+    for (row=1;row<=num;row++) {
         //Loop for printing blank spaces, decreasing each loop
-        for(c=a-b;c>=1;c--) {
+        for(space=num-row;space>=1;space--) {
             printf("   ");
         }
         //Loop for printing highest value to one, highest value increasing each loop
-        for(d=b;d>1;d--) {
-            printf("%3d",d);
+        for(value=row;value>1;value--) {
+            printf("%3d",value);
         }
         //Loop for printing 2 to highest value, highest value increasing each loop
-        for(d;d<=b;d++) {
-            printf("%3d",d);
+        for(value;value<=row;value++) {
+            printf("%3d",value);
         }
     printf("\n");
     }
