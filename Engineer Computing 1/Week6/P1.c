@@ -2,8 +2,8 @@
 #include <string.h>
 #include <ctype.h>
 int main(){
-    char s[100], s1[100];
-    int i, count, upcount, lowcount, dgcount, punccount, temp;
+    char s[100], s1[100], temp;
+    int i, count, upcount, lowcount, dgcount, punccount, totalletter;
     printf("Enter a string: ");
     scanf("%[^\n]s",s);
     count=0;
@@ -26,18 +26,16 @@ int main(){
                     punccount++;
                     }
     }
+    totalletter=upcount+lowcount;
     printf("Number of uppercase characters: %d\n", upcount);
     printf("Number of lowercase characters: %d\n", lowcount);
     printf("Number of digits: %d\n", dgcount);
     printf("Number of punctuations: %d\n", punccount);
+    printf("Total letters: %d\n", totalletter);
     
     strcpy(s1,s);
     for(i=0;i<=100;i++){
-        if(isupper(s1[i])){
-            s1[i]=tolower(s1[i]);
-        } else if(islower(s1[i])){
-            s1[i]=toupper(s1[i]);
-        }
+        s1[i]=(islower(s[i]))? toupper(s1[i]): tolower(s1[i]);
     }
     printf("Inverse case string: %s\n",s1);
     

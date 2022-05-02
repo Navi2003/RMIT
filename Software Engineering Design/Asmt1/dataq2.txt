@@ -1,0 +1,8 @@
+Name: Bob, Account info: ID: s123, Balance: $0
+
+Name: Jog, Account info: ID: s124, Balance: $2491
+
+Name: Bog, Account info: ID: s125, Balance: $1200
+
+Name: Job, Account info: ID: s126, Balance: $200
+

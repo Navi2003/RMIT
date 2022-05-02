@@ -7,6 +7,7 @@ int main(){
         printf("Enter full name %d: ",i+1);
         scanf("\n%[^\n]s",name[i]);
     }
+    printf("First names: ");
     for(i=0;i<5;i++){
         space=0;
         for(j=0;name[i][j]!=' ';j++){
@@ -14,10 +15,18 @@ int main(){
         }
         strncpy(firstname[i], name[i], space);
         firstname[i][space]='\0';
-    }
-    printf("First names:");
-    for(i=0;i<5;i++){
-        printf(" %s",firstname[i]);
+        printf("%s",firstname[i]);
+        switch(i){
+            case 3:
+            printf(" and ");
+            break;
+            case 4:
+            printf(".");
+            break;
+            default:
+            printf(", ");
+            break;
+        }
     }
     printf("\n");
     
