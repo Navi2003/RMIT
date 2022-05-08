@@ -1,3 +1,15 @@
+/*
+  RMIT University Vietnam
+  Course: EEET2482 Software Engineering Design
+  Semester: 2022A
+  Lab Assessment: 2
+  Author: Doan Tran Thien Phuc
+  ID: s3926377
+  Compiler used: gcc 8.1.0
+  Created  date: 6/5/2022
+  Acknowledgement: StackOverflow, lecture slides, previous tutorials
+*/
+
 #include <iostream>
 #include <vector>
 
@@ -10,7 +22,9 @@ class Customer;
 //Product class
 class Product{
 //Declare attributes
-
+private:
+    string name, ID;
+    double price;
 public:
     //Constructors
     Product(){};
@@ -44,25 +58,22 @@ public:
         currentBill.push_back(prod);
         cout << "Successfully added " << prod.name << " to cart\n";
     }
-
-    //Function to check out
-    void checkOutCurrentCart(){
-        for(Product prod: currentBill){
-            totalSpent += prod.price;
-        }
-        currentBill.clear();
-    }
     
+    //Function to show customer info
     void showInfo(){
-        cout << "Name: " << name << "\n"
+        cout << "\nName: " << name << "\n"
              << "ID: " << ID << "\n"
              << "Current Bill: ";
         for (Product prod : currentBill){
-            cout << prod.name << "  ";
+            cout << prod.name << "\n";
         }
-        cout << "\nTotal spent: $" << totalSpent;
+        if (currentBill.empty()){
+            cout << "\n";
+        }
+        cout << "Total spent: $" << totalSpent << "\n";
     }
     friend class Shop;
+    friend void makePurchase(Shop *s, Customer *c);
 };
 
 
@@ -71,7 +82,7 @@ class Shop{
 private:
     string name;
     vector <Product> productList;
-    double totalRev;
+    double totalRev = 0;
 public:
     //Constructors
     Shop(){};
@@ -90,28 +101,56 @@ public:
             totalBill += prod.price;
         }
         cout <<  "Total bill: $" << totalBill << "\n";
-        c->checkOutCurrentCart();
+        totalRev += totalBill;
+        c->totalSpent += totalBill;
+        c->currentBill.clear();
         return totalBill;
     };
 
+    //Function to show shop info
+    void showInfo(){
+        cout << "\nShop name: " << name << "\n"
+             << "Product list: \n";
+        int i = 1;
+        for (Product prod : productList){
+            cout << i << ". " << prod.name << "  $" << prod.price << "\n";
+            i++;
+        }
+        cout << "Total revenue: $" << totalRev << "\n";
+    }
+
     friend class Product;
     friend class Customer;
+    friend void makePurchase(Shop *s, Customer *c);
 };
+
+//Function to make purchase
+
+void makePurchase (Shop *s, Customer *c){
+    int choice;
+    s->showInfo();
+    cout << "Enter the product you want to buy: ";
+    cin >> choice;
+    c->addToCart(s->productList[choice-1]);
+}
 
 
 int main(){
     Product p1("Milk", "1", 10), p2("Sugar", "2", 15);
     Shop s1("Shopee", {p1, p2});
     Customer c1("John", "c1");
-
-
-    c1.addToCart(p1);
-    c1.addToCart(p2);
+    string choice;
+    
+    makePurchase(&s1, &c1);
+    //Buying products and show cart
     c1.showInfo();
     
+    //Calculate bill and pay
     s1.calculateBill(&c1);
 
+    //Show info to check spent and revenue
     cout << "\n";
     c1.showInfo();
+    s1.showInfo();
     return 0;
 }
